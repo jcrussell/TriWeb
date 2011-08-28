@@ -1,30 +1,30 @@
-<h1>Listing workouts</h1>
+<h1>Workout Calendar</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>What</th>
-    <th>When</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @workouts.each do |day, workouts| %>
-  <tr><td colspan=7><%= day %></td></tr>
-  <% workouts.each do |workout| %>
-    <tr>
-      <td><%= workout.name %></td>
-      <td><%= workout.description %></td>
-      <td><%= workout.what %></td>
-      <td><%= workout.when %></td>
-      <td><%= link_to 'Show', workout %></td>
-      <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
-      <td><%= link_to 'Destroy', workout, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
+<table id="workouts">
+<tr>
+<% @days_of_week.each do |day| %>
+  <th class='day_of_week'><%= day %></th>
 <% end %>
+</tr>
+
+<% @workouts.in_groups_of(7) do |week| %>
+  <tr>
+  <% week.each do |hash| %>
+    <td class='<%= hash[:class] %>'>
+      <span class='date'><%= hash[:date].strftime("%m-%d") %></span>
+      <ul>
+      <% hash[:workouts].each do |workout| %>
+        <li>
+          <span class="time"><%= workout.when.strftime("%I:%M %p:") %></span>
+          <span class="type"><%= link_to workout.what, workout %></span>
+        </li>
+      <% end %>
+      </ul>
+    </td>
+  <% end %>
+  </tr>
+<% end %>
+
 </table>
 
 <br />

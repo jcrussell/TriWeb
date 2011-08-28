@@ -1,0 +1,42 @@
+#workouts {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#workouts th, #workouts td {
+  border: solid 2px black;
+}
+
+#workouts th {
+  text-align: center;
+  color: #1C264E;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+#workouts td {
+  height: 150px;
+  width: 100px;
+  vertical-align: top;
+  background: #D0E1F5;
+}
+
+#workouts td.today {
+  border: double 2px blue;
+}
+
+#workouts td.past {
+  background: #CCCCCC;
+}
+
+#workouts span.time {
+  font-weight: bold;
+}
+
+#workouts ul {
+  margin-left: 1px;
+  padding-left: 0px;
+}
+#workouts li {
+  list-style-type: none;
+}
