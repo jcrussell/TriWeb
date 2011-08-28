@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%= @workout.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @workout.description %>
+</p>
+
+<p>
+  <b>What:</b>
+  <%= @workout.what %>
+</p>
+
+<p>
+  <b>When:</b>
+  <%= @workout.when %>
+</p>
+
+
+<%= link_to 'Edit', edit_workout_path(@workout) %> |
+<%= link_to 'Back', workouts_path %>

@@ -1,5 +1,7 @@
 TriWeb::Application.routes.draw do
 
+  resources :workouts
+
   get "home/index"
 
   root :to => "home#index"
