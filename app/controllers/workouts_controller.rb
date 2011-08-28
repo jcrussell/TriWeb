@@ -2,7 +2,10 @@ class WorkoutsController < ApplicationController
   # GET /workouts
   # GET /workouts.xml
   def index
-    @workouts = Workout.all
+    # Get workouts ranging from 3 days ago to 10 days in advance => 2 week window.
+    # TODO: User should be select calendar mode - fixed 2 weeks, month, week etc.
+    # TODO: User should be able to navigate forwards and backwards weeks
+    @workouts = Workout.find_by_range(3.day.ago(Time.now.beginning_of_day), 10.day.from_now(Time.now.end_of_day))
 
     respond_to do |format|
       format.html # index.html.erb

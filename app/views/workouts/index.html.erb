@@ -11,16 +11,19 @@
     <th></th>
   </tr>
 
-<% @workouts.each do |workout| %>
-  <tr>
-    <td><%= workout.name %></td>
-    <td><%= workout.description %></td>
-    <td><%= workout.what %></td>
-    <td><%= workout.when %></td>
-    <td><%= link_to 'Show', workout %></td>
-    <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
-    <td><%= link_to 'Destroy', workout, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% @workouts.each do |day, workouts| %>
+  <tr><td colspan=7><%= day %></td></tr>
+  <% workouts.each do |workout| %>
+    <tr>
+      <td><%= workout.name %></td>
+      <td><%= workout.description %></td>
+      <td><%= workout.what %></td>
+      <td><%= workout.when %></td>
+      <td><%= link_to 'Show', workout %></td>
+      <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
+      <td><%= link_to 'Destroy', workout, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
 <% end %>
 </table>
 
