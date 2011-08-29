@@ -1,4 +1,7 @@
 class WorkoutsController < ApplicationController
+  # TODO: Disabled for testing... not sure how to create a "verified" account using Factory
+  #before_filter :authenticate_user!
+
   # GET /workouts
   # GET /workouts.xml
   def index

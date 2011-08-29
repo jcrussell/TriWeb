@@ -1,5 +1,11 @@
 class Workout < ActiveRecord::Base
-  attr_accessible :when, :description, :what, :when
+  @@types = %w(Swim Bike Run Brick Race Social Other)
+
+  validates :name, :description, :what, :when, :presence => true
+  validates_inclusion_of :what, :in => @@types
+  validates_datetime :when, :after => :now
+
+  attr_accessible :name, :description, :what, :when
 
   # Returns a list of hashes between first and last. In the hash, there are two keys,
   # :date, and :workouts.

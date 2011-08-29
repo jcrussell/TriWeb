@@ -9,6 +9,10 @@ gem 'sqlite3'
 
 gem 'devise'
 
+gem 'validates_timeliness', '~> 3.0.2'
+
+gem 'factory_girl_rails'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

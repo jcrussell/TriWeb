@@ -2,7 +2,7 @@ require 'test_helper'
 
 class WorkoutsControllerTest < ActionController::TestCase
   setup do
-    @workout = workouts(:one)
+    @workout = FactoryGirl.create(:workout, :when => DateTime.now.end_of_day)
   end
 
   test "should get index" do
