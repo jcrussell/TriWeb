@@ -11,11 +11,11 @@ class Workout < ActiveRecord::Base
   # :date, and :workouts.
   # Expects two dates for parameters
   def self.find_by_range(first, last)
-    found = Workout.find(:all, :conditions => {:time => (first..last)}, :order => "name")
+    found = Workout.find(:all, :conditions => {:time => (first..last)}, :order => "time")
     workouts = []
 
     (first..last).each do |day|
-      workouts << {:date =>day, :workouts => found.select {|x| x.time.to_date == day} }
+      workouts << {:date => day, :workouts => found.select {|x| x.time.to_date == day} }
     end
 
     workouts

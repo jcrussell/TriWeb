@@ -7,8 +7,8 @@ class CalendarController < ApplicationController
     # Get workouts ranging from 3 days ago to 10 days in advance => 2 week window.
     # TODO: User should be select calendar mode - fixed 2 weeks, month, week etc.
     # TODO: User should be able to navigate forwards and backwards weeks
-    first = 3.day.ago(Time.now.beginning_of_day).to_date
-    last = 10.day.from_now(Time.now.end_of_day).to_date
+    first = 3.day.ago(Date.today)
+    last = 10.day.from_now(Date.today)
     @workouts = Workout.find_by_range(first, last)
 
     # Add class to each: past, today, future
@@ -21,6 +21,9 @@ class CalendarController < ApplicationController
         hash[:class] = "future"
       end
     end
+
+    # Sort the days into weeks
+    @workouts = @workouts.in_groups_of(7)
 
     days = %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)
     # Get the list of days of the week, only need the first 7

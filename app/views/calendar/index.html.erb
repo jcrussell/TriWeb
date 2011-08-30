@@ -7,7 +7,7 @@
 <% end %>
 </tr>
 
-<% @workouts.in_groups_of(7) do |week| %>
+<% @workouts.each do |week| %>
   <tr>
   <% week.each do |hash| %>
     <td class='<%= hash[:class] %>'>
