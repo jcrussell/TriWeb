@@ -1,5 +1,7 @@
 TriWeb::Application.routes.draw do
 
+  get "calendar/index"
+
   resources :workouts
 
   get "home/index"
