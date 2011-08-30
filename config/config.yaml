@@ -1,7 +1,10 @@
 # This is the configuration file for TriWeb. Use it to customize the site.
 
 # This is the title of the website, displayed on the tab in most browsers
-title: TriWeb
+title: Tri Website
+
+# Nickname for the site, this should be one word and short like TriWeb or UCDTri
+title_nick: TriWeb
 
 # This is the logo that appears in the upper left corner of the website
 banner_logo: /images/rails.png

@@ -10,7 +10,22 @@
     <div id="pagebody">
       <a href="/"><img src="<%= APP_CONFIG['banner_logo'] %>" alt=<%= APP_CONFIG['title'] %> id="banner_logo" /></a>
       <div id="nav">
-        <span>TODO</span>
+        <ul class='dropdown'>
+          <% create_navigation.each do |key,vals| %>
+            <li>
+            <% if vals.length == 1 %>
+              <%= link_to key.capitalize, vals[0] %>
+            <% else %>
+              <span><%= key %></span>
+              <ul>
+                <% vals.each do |val| %>
+                  <li><%= link_to get_nav_name(val).capitalize, val %>
+                <% end %>
+              </ul>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>
       </div>
       <div id="pagecontents">
         <% if notice %>
