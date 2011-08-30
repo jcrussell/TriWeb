@@ -15,7 +15,7 @@
       <ul>
       <% hash[:workouts].each do |workout| %>
         <li>
-          <span class="time"><%= workout.when.strftime("%I:%M %p:") %></span>
+          <span class="time"><%= workout.time.strftime("%I:%M %p:") %></span>
           <span class="type"><%= link_to workout.what, workout %></span>
         </li>
       <% end %>

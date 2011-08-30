@@ -8,11 +8,11 @@ class WorkoutTest < ActiveSupport::TestCase
     assert workout.errors[:name].any?
     assert workout.errors[:description].any?
     assert workout.errors[:what].any?
-    assert workout.errors[:when].any?
+    assert workout.errors[:time].any?
   end
 
   test "what must be in @@types" do
-    workout = FactoryGirl.create(:workout, :when => DateTime.now.end_of_day)
+    workout = FactoryGirl.create(:workout)
     workout.what = "not in types"
     assert workout.invalid?
     assert workout.errors[:what].any?
@@ -20,11 +20,11 @@ class WorkoutTest < ActiveSupport::TestCase
     assert workout.valid?
   end
 
-  test "when must be after now" do
-    workout = FactoryGirl.create(:workout, :when => DateTime.now.end_of_day)
-    workout.when = DateTime.now.beginning_of_day
+  test "time must be after now" do
+    workout = FactoryGirl.create(:workout)
+    workout.time = DateTime.now.beginning_of_day
     assert workout.invalid?
-    assert workout.errors[:when].any?
+    assert workout.errors[:time].any?
   end
 
 end

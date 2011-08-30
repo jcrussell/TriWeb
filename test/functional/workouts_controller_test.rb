@@ -2,13 +2,7 @@ require 'test_helper'
 
 class WorkoutsControllerTest < ActionController::TestCase
   setup do
-    @workout = FactoryGirl.create(:workout, :when => DateTime.now.end_of_day)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:workouts)
+    @workout = FactoryGirl.create(:workout)
   end
 
   test "should get new" do

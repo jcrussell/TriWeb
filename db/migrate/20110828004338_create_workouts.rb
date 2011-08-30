@@ -4,7 +4,7 @@ class CreateWorkouts < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :what
-      t.datetime :when
+      t.datetime :time
 
       t.timestamps
     end
