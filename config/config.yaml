@@ -1,0 +1,7 @@
+# This is the configuration file for TriWeb. Use it to customize the site.
+
+# This is the title of the website, displayed on the tab in most browsers
+title: TriWeb
+
+# This is the logo that appears in the upper left corner of the website
+banner_logo: /images/rails.png
