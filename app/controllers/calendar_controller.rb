@@ -1,6 +1,5 @@
 class CalendarController < ApplicationController
-  # TODO: Disabled for testing... not sure how to create a "verified" account using Factory
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user!
 
   # GET /calendar
   def index

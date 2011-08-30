@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20110828004338) do
     t.text     "description"
     t.string   "what"
     t.datetime "time"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
