@@ -20,7 +20,7 @@
                 <span><%= key %></span>
                 <ul>
                   <% vals.each do |val| %>
-                    <li><%= link_to get_nav_name(val).capitalize, val %>
+                    <li><%= link_to get_nav_name(val).capitalize, val %></li>
                   <% end %>
                 </ul>
               <% end %>
@@ -40,7 +40,7 @@
         <%= yield %>
       </div>
       <div id="pagefooter">
-         <span>Content Copyright <%= APP_CONFIG['content_copyright_years'] %> by the <%= APP_CONFIG['title'] %>. All rights reserved.<span>
+         <span>Content Copyright <%= APP_CONFIG['content_copyright_years'] %> by the <%= APP_CONFIG['title'] %>. All rights reserved.</span>
          <br />
          <span>Website powered by the <%= link_to "TriWeb", "https://github.com/jcrussell/TriWeb" %> project.</span>
       </div>

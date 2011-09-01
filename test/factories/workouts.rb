@@ -4,5 +4,6 @@ FactoryGirl.define do
     description "This is a test workout."
     what        "Swim"
     time        { DateTime.now.end_of_day }
+    user_id     1
   end
 end
