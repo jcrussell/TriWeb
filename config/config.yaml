@@ -8,3 +8,6 @@ title_nick: TriWeb
 
 # This is the logo that appears in the upper left corner of the website
 banner_logo: /images/rails.png
+
+# Years to include in copyright for the footer (applies only to content, not code).
+content_copyright_years: 2011

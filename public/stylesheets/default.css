@@ -1,0 +1,31 @@
+#pagebody {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #DDD;
+  padding: 10px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+}
+
+#pageheader {
+  margin-top: 10px;
+  height: 75px;
+  position: relative;
+}
+
+#nav {
+  display: block;
+  position: absolute;
+  top: 45px;
+  right: 0px;
+}
+
+#pagecontents {
+  background: #EEE;
+  padding: 15px;
+}
+
+#pagefooter {
+  margin-top: 10px;
+}
