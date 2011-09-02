@@ -4,8 +4,8 @@
 </p>
 
 <p>
-  <b>Description:</b>
-  <%= @workout.description %>
+  <b>Posted By:</b>
+  <%= @workout.user.email %>
 </p>
 
 <p>
@@ -16,6 +16,20 @@
 <p>
   <b>Time:</b>
   <%= @workout.time %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @workout.description %>
+</p>
+
+<p>
+  <b>Attendees:</b>
+  <ul>
+  <% @workout.workout_attendee.each do |attendee| %>
+    <li><%= attendee.user.email %>
+  <% end %>
+  </ul>
 </p>
 
 

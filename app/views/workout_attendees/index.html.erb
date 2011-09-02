@@ -1,0 +1,27 @@
+<h1>Listing workout_attendees</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Workout</th>
+    <th>Likelihood</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @workout_attendees.each do |workout_attendee| %>
+  <tr>
+    <td><%= workout_attendee.user_id %></td>
+    <td><%= workout_attendee.workout_id %></td>
+    <td><%= workout_attendee.likelihood %></td>
+    <td><%= link_to 'Show', workout_attendee %></td>
+    <td><%= link_to 'Edit', edit_workout_attendee_path(workout_attendee) %></td>
+    <td><%= link_to 'Destroy', workout_attendee, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Workout attendee', new_workout_attendee_path %>

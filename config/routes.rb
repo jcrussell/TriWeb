@@ -1,5 +1,7 @@
 TriWeb::Application.routes.draw do
 
+  resources :workout_attendees
+
   get "calendar/index"
 
   resources :workouts

@@ -7,6 +7,8 @@ class Workout < ActiveRecord::Base
 
   attr_accessible :name, :description, :what, :time
 
+  has_many :workout_attendees, :dependent => :destroy
+
   belongs_to :user # user that created the workout
 
   # Returns a list of hashes between first and last. In the hash, there are two keys,
