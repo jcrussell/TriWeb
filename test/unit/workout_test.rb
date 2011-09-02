@@ -11,14 +11,16 @@ class WorkoutTest < ActiveSupport::TestCase
     assert workout.errors[:time].any?
   end
 
-  test "what must be in @@types" do
+  test "what must be in TYPES" do
     workout = FactoryGirl.create(:workout)
     assert workout.valid?
     workout.what = "not in types"
     assert workout.invalid?
     assert workout.errors[:what].any?
-    workout.what = "Swim"
-    assert workout.valid?
+    Workout::TYPES.each do |type|
+      workout.what = type
+      assert workout.valid?
+    end
   end
 
   test "time must be after now" do

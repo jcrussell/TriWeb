@@ -1,8 +1,8 @@
 class Workout < ActiveRecord::Base
-  @@types = %w(Swim Bike Run Brick Race Social Other)
+  TYPES = %w(Swim Bike Run Brick Race Social Other)
 
   validates :name, :description, :what, :time, :presence => true
-  validates_inclusion_of :what, :in => @@types
+  validates_inclusion_of :what, :in => TYPES
   validates_datetime :time, :after => :now
 
   attr_accessible :name, :description, :what, :time

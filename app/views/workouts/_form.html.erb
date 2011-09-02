@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :what %><br />
-    <%= f.text_field :what %>
+    <%= f.select :what, Workout::TYPES, :prompt => 'Select type' %>
   </div>
   <div class="field">
     <%= f.label :time %><br />
