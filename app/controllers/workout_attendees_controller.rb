@@ -1,83 +1,54 @@
 class WorkoutAttendeesController < ApplicationController
-  # GET /workout_attendees
-  # GET /workout_attendees.xml
-  def index
-    @workout_attendees = WorkoutAttendee.all
+  before_filter :authenticate_user!
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @workout_attendees }
-    end
-  end
-
-  # GET /workout_attendees/1
-  # GET /workout_attendees/1.xml
-  def show
-    @workout_attendee = WorkoutAttendee.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @workout_attendee }
-    end
-  end
-
-  # GET /workout_attendees/new
-  # GET /workout_attendees/new.xml
+  # GET /workouts/1/workout_attendees/new
   def new
-    @workout_attendee = WorkoutAttendee.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @workout_attendee }
-    end
+    @workout = Workout.find(params[:workout_id])
+    @workout_attendee = @workout.workout_attendees.build
   end
 
-  # GET /workout_attendees/1/edit
+  # GET /workouts/1/workout_attendees/1/edit
   def edit
-    @workout_attendee = WorkoutAttendee.find(params[:id])
+    @workout = Workout.find(params[:workout_id])
+    @workout_attendee = find_attendance_for_user
   end
 
-  # POST /workout_attendees
-  # POST /workout_attendees.xml
+  # POST /workouts/1/workout_attendees
   def create
-    @workout_attendee = WorkoutAttendee.new(params[:workout_attendee])
+    @workout = Workout.find(params[:workout_id])
+    @workout_attendee = @workout.workout_attendees.build(params[:workout_attendee])
+    @workout_attendee.user = current_user
 
-    respond_to do |format|
-      if @workout_attendee.save
-        format.html { redirect_to(@workout_attendee, :notice => 'Workout attendee was successfully created.') }
-        format.xml  { render :xml => @workout_attendee, :status => :created, :location => @workout_attendee }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @workout_attendee.errors, :status => :unprocessable_entity }
-      end
+    if @workout_attendee.save
+      redirect_to(@workout, :notice => 'Workout attendance was successfully saved.')
+    else
+      redirect_to(@workout, :notice => 'Failed to save workout attendance.')
     end
   end
 
-  # PUT /workout_attendees/1
-  # PUT /workout_attendees/1.xml
+  # PUT /workouts/1/workout_attendees
   def update
-    @workout_attendee = WorkoutAttendee.find(params[:id])
+    @workout = Workout.find(params[:workout_id])
+    @workout_attendee = find_attendance_for_user
 
-    respond_to do |format|
-      if @workout_attendee.update_attributes(params[:workout_attendee])
-        format.html { redirect_to(@workout_attendee, :notice => 'Workout attendee was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @workout_attendee.errors, :status => :unprocessable_entity }
-      end
+    if params[:workout_attendee][:likelihood] == "0"
+      @workout_attendee.destroy
+      redirect_to(@workout, :notice => 'Workout attendance removed successfully.')
+    elsif @workout_attendee.update_attributes(params[:workout_attendee])
+      redirect_to(@workout, :notice => 'Workout attendance was successfully updated.')
+    else
+      redirect_to(@workout, :notice => 'Failed to update workout attendance.')
     end
   end
 
-  # DELETE /workout_attendees/1
-  # DELETE /workout_attendees/1.xml
-  def destroy
-    @workout_attendee = WorkoutAttendee.find(params[:id])
-    @workout_attendee.destroy
+  private
 
-    respond_to do |format|
-      format.html { redirect_to(workout_attendees_url) }
-      format.xml  { head :ok }
+  def find_attendance_for_user()
+    match = @workout.workout_attendees.select { |workout_attendee| workout_attendee.user == current_user }
+    if match.empty?
+      redirect_to(@workout)
+    else
+      match[0]
     end
   end
 end

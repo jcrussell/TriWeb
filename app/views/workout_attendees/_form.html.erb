@@ -1,29 +1,4 @@
-<%= form_for(@workout_attendee) do |f| %>
-  <% if @workout_attendee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@workout_attendee.errors.count, "error") %> prohibited this workout_attendee from being saved:</h2>
-
-      <ul>
-      <% @workout_attendee.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :workout_id %><br />
-    <%= f.text_field :workout_id %>
-  </div>
-  <div class="field">
-    <%= f.label :likelihood %><br />
-    <%= f.text_field :likelihood %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= form_for [@workout, @workout.workout_attendees.build] do |f| %>
+  <%= f.select :likelihood, create_levels %>
+  <%= f.submit "Mark Interest" %>
 <% end %>

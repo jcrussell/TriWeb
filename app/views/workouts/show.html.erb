@@ -24,14 +24,15 @@
 </p>
 
 <p>
-  <b>Attendees:</b>
-  <ul>
-  <% @workout.workout_attendee.each do |attendee| %>
-    <li><%= attendee.user.email %>
-  <% end %>
-  </ul>
+  <b>Possible Attendees:</b>
+  <div id="attendees">
+  <%= render @workout.workout_attendees %>
+  </div>
 </p>
 
+<% if !marked_interest?(@workout) %>
+  <%= render :partial => "workout_attendees/form" %>
+<% end %>
 
 <%= link_to 'Edit', edit_workout_path(@workout) %> |
 <%= link_to 'Back', workouts_path %>

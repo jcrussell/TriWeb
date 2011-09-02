@@ -1,10 +1,10 @@
 TriWeb::Application.routes.draw do
 
-  resources :workout_attendees
-
   get "calendar/index"
 
-  resources :workouts
+  resources :workouts do
+    resources :workout_attendees
+  end
 
   get "home/index"
 
