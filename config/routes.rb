@@ -3,7 +3,7 @@ TriWeb::Application.routes.draw do
   get "calendar/index"
 
   resources :workouts do
-    resources :workout_attendees
+    resources :workout_attendees, :only => [:create, :update]
   end
 
   get "home/index"
