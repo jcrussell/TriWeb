@@ -8,6 +8,7 @@ class Workout < ActiveRecord::Base
   attr_accessible :name, :description, :what, :time
 
   has_many :workout_attendees, :dependent => :destroy
+  has_many :workout_comments, :dependent => :destroy
 
   belongs_to :user # user that created the workout
 

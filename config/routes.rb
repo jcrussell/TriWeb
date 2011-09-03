@@ -4,6 +4,7 @@ TriWeb::Application.routes.draw do
 
   resources :workouts do
     resources :workout_attendees, :only => [:create, :update]
+    resources :workout_comments, :only => [:create]
   end
 
   get "home/index"

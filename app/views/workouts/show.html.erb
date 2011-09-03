@@ -34,5 +34,14 @@
   <%= render :partial => "workout_attendees/form" %>
 <% end %>
 
+<p>
+  <b>Comments:</b>
+  <div id="comments">
+  <%= render @workout.workout_comments %>
+  </div>
+</p>
+
+<%= render :partial => "workout_comments/form" %>
+
 <%= link_to 'Edit', edit_workout_path(@workout) %> |
 <%= link_to 'Back', workouts_path %>

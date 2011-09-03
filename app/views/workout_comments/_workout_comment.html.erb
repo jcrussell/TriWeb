@@ -1,0 +1,6 @@
+<% @workout_comment = workout_comment %>
+<% css = current_user?(@workout_comment) ? "owner" : "" %>
+<div class="workout_comment <%= css %>">
+  <span class="comment_header">Comment by: <%= @workout_comment.user.email %> on <%= @workout_comment.created_at %></span>
+  <span><%= @workout_comment.comment %></span>
+</div>

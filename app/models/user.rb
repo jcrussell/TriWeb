@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
 
   has_many :workouts, :dependent => :destroy
   has_many :workout_attendees, :dependent => :destroy
+  has_many :workout_comments, :dependent => :destroy
 end
