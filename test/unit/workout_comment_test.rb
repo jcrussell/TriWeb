@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class WorkoutCommentTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+
+  test "all fields must be set" do
+    comment = WorkoutComment.new
+    assert comment.invalid?
+    assert comment.errors[:comment].any?
   end
 end
