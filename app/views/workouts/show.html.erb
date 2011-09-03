@@ -1,47 +1,59 @@
-<p>
-  <b>Name:</b>
-  <%= @workout.name %>
-</p>
+<div id="details">
+  <span class='banner'>Workout Details</span>
+  <p>
+    <b>Name:</b>
+    <%= @workout.name %>
+  </p>
 
-<p>
-  <b>Posted By:</b>
-  <%= @workout.user.email %>
-</p>
+  <p>
+    <b>Posted By:</b>
+    <%= @workout.user.email %>
+  </p>
 
-<p>
-  <b>What:</b>
-  <%= @workout.what %>
-</p>
+  <p>
+    <b>What:</b>
+    <%= @workout.what %>
+  </p>
 
-<p>
-  <b>Time:</b>
-  <%= @workout.time %>
-</p>
+  <p>
+    <b>Time:</b>
+    <%= @workout.time %>
+  </p>
 
-<p>
-  <b>Description:</b>
-  <%= @workout.description %>
-</p>
+  <p>
+    <b>Description:</b>
+    <%= @workout.description %>
+  </p>
+</div>
 
-<p>
-  <b>Possible Attendees:</b>
-  <div id="attendees">
-  <%= render @workout.workout_attendees %>
-  </div>
-</p>
 
-<% if !marked_interest?(@workout) %>
-  <%= render :partial => "workout_attendees/form" %>
-<% end %>
+<div id="attendees">
+  <span class='banner'>Possible Attendees</span>
+  <% if @workout.workout_attendees.empty? %>
+    <span>No one yet!<span>
+  <% else %>
+    <%= render @workout.workout_attendees %>
+  <% end %>
+  <% if !marked_interest?(@workout) %>
+    <hr />
+    <%= render :partial => "workout_attendees/form" %>
+  <% end %>
+</div>
 
-<p>
-  <b>Comments:</b>
-  <div id="comments">
-  <%= render @workout.workout_comments %>
-  </div>
-</p>
 
-<%= render :partial => "workout_comments/form" %>
+<div id="comments">
+  <span class='banner'>Comments</span>
+  <% if @workout.workout_comments.empty? %>
+    <span>None yet!<span>
+  <% else %>
+    <%= render @workout.workout_comments %>
+  <% end %>
+  <hr />
+  <%= render :partial => "workout_comments/form" %>
+</div>
+
+
+<hr />
 
 <%= link_to 'Edit', edit_workout_path(@workout) %> |
 <%= link_to 'Back', workouts_path %>

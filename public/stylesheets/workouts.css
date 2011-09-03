@@ -1,0 +1,46 @@
+#details, #comments, #attendees {
+  margin: 10px;
+}
+
+#details p {
+  margin: 2px;
+}
+
+#attendees form, #attendees #change_interest{
+  display: inline;
+}
+
+.workout_comment {
+  border: solid #AAA 1px;
+  margin: 5px 0px;
+}
+
+.workout_comment .owner {
+  border: solid #BBB 1px;
+}
+
+.workout_comment .comment_header {
+  display: block;
+  background: #AAA;
+  margin-bottom: 2px;
+}
+
+.workout_comment .comment_header .owner {
+  background: #BBB;
+}
+
+.workout_comment span {
+  padding: 2px;
+}
+
+#mark_interest {
+  text-align: right;
+}
+
+#post_comment {
+  text-align: right;
+}
+
+#post_comment textarea {
+  width: 100%;
+}

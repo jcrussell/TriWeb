@@ -1,11 +1,13 @@
-<p>
+<div>
   <% @workout_attendee = workout_attendee %>
-  <%= @workout_attendee.user.email %>: <%= @workout_attendee.likelihood %>%
-  <% if current_user?(@workout_attendee) %>
-    <div id="change_interest">
-      <%= render :partial => "workout_attendees/change_interest", :locals => { :val =>  10 } %>
-      <%= render :partial => "workout_attendees/change_interest", :locals => { :val => -10 } %>
-      <%= render :partial => "workout_attendees/change_interest", :locals => { :val =>   0 } %>
-    </div>
-  <% end %>
-</p>
+  <span>
+    <%= @workout_attendee.user.email %>: <%= @workout_attendee.likelihood %>%
+    <% if current_user?(@workout_attendee) %>
+      <div id="change_interest">
+        <%= render :partial => "workout_attendees/change_interest", :locals => { :val =>  10 } %>
+        <%= render :partial => "workout_attendees/change_interest", :locals => { :val => -10 } %>
+        <%= render :partial => "workout_attendees/change_interest", :locals => { :val =>   0 } %>
+     </div>
+    <% end %>
+  </span>
+</div>
