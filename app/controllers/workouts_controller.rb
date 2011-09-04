@@ -18,12 +18,7 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts/1/edit
   def edit
-    begin
-      @workout = current_user.workouts.find(params[:id])
-    rescue
-      flash[:notice] = 'Cannot edit workout, it does not exist or you did not create it.'
-      redirect_to :back
-    end
+    @workout = get_workout
   end
 
   # POST /workouts
@@ -39,31 +34,33 @@ class WorkoutsController < ApplicationController
 
   # PUT /workouts/1
   def update
-    begin
-      # Can only update workouts that user created
-      @workout = current_user.workouts.find(params[:id])
+    @workout = get_workout
 
-      if @workout.update_attributes(params[:workout])
-        redirect_to(@workout, :notice => 'Workout was successfully updated.')
-      else
-        render :action => "edit"
-      end
-    rescue
-      flash[:notice] = 'Cannot update workout, it does not exist or you did not create it.'
-      redirect_to :back
+    if @workout.update_attributes(params[:workout])
+      redirect_to(@workout, :notice => 'Workout was successfully updated.')
+    else
+      render :action => "edit"
     end
   end
 
   # DELETE /workouts/1
   def destroy
-    begin
-      # Can only destroy workouts that user created
-      @workout = current_user.workouts.find(params[:id])
-      @workout.destroy
+    @workout = get_workout
+    @workout.destroy
 
-      redirect_to(workouts_url)
+    redirect_to(workouts_url)
+  end
+
+  def get_workout
+    begin
+      # Moderators can update all workouts, otherwise users can only update the ones they've created
+      if current_user.is_moderator?
+        return Workouts.find(params[:id])
+      else
+        return current_user.workouts.find(params[:id])
+      end
     rescue
-      flash[:notice] = 'Cannot destroy workout, it does not exist or you did not create it.'
+      flash[:notice] = 'Cannot update workout, it does not exist or you did not create it.'
       redirect_to :back
     end
   end

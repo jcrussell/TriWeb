@@ -37,6 +37,7 @@ GEM
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
+    easy_roles (1.2.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     factory_girl (2.0.5)
@@ -102,6 +103,7 @@ PLATFORMS
 
 DEPENDENCIES
   devise
+  easy_roles
   factory_girl_rails
   rails (= 3.0.9)
   ruby-debug19

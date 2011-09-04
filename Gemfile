@@ -13,6 +13,8 @@ gem 'validates_timeliness', '~> 3.0.2'
 
 gem 'factory_girl_rails'
 
+gem 'easy_roles'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -1,7 +1,7 @@
 <div>
   <% @workout_attendee = workout_attendee %>
   <span>
-    <%= @workout_attendee.user.email %>: <%= @workout_attendee.likelihood %>%
+    <%= @workout_attendee.user.name %>: <%= @workout_attendee.likelihood %>%
     <% if current_user?(@workout_attendee) %>
       <div id="change_interest">
         <%= render :partial => "workout_attendees/change_interest", :locals => { :val =>  10 } %>
