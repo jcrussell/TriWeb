@@ -1,0 +1,31 @@
+<h1>Roles</h1>
+
+<%= form_tag admin_roles_update_path do %>
+  <table id="roles">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="<%= @num_roles %>">
+        Roles
+        <table>
+          <tr>
+          <% @roles.each do |role| %>
+            <td><%= role %></td>
+          <% end %>
+          </tr>
+        </table>
+      </th>
+    </tr>
+    
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <% @roles.each do |role| %>
+          <td><%= check_box_tag "user[#{user.to_param}][#{role}]", "yes", (user.has_role? role) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <%= submit_tag "Update Roles" %>
+<% end %>

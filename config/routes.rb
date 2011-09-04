@@ -1,5 +1,10 @@
 TriWeb::Application.routes.draw do
 
+  scope "/admin", :name_prefix => "admin" do
+    get "roles/index"
+    post "roles/update"
+  end
+
   get "calendar/index"
 
   resources :workouts do
