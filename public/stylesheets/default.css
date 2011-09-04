@@ -24,6 +24,7 @@
 #pagecontents {
   background: #EEE;
   padding: 15px;
+  position: relative;
 }
 
 #pagefooter {

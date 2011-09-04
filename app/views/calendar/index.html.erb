@@ -1,4 +1,10 @@
-<h1>Workout Calendar</h1>
+<h1>Calendar</h1>
+
+<div id="calendar_nav">
+  <%= link_to "Today" %>
+  <%= link_to "<", :date => @prev_group %>
+  <%= link_to ">", :date => @next_group %>
+</div>
 
 <table id="workouts">
 <tr>

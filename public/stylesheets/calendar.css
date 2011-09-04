@@ -38,6 +38,21 @@
   margin-left: 1px;
   padding-left: 0px;
 }
+
 #workouts li {
   list-style-type: none;
+}
+
+#calendar_nav {
+  position: absolute;
+  top: 35px;
+  left: 150px;
+}
+
+#calendar_nav a {
+  text-decoration: none;
+  background: #888;
+  padding: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
 }
