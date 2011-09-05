@@ -28,9 +28,19 @@ class Admin::RolesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get update" do
+  test "should not get update no data" do
     sign_in @admin
     post :update
+    assert_redirected_to admin_roles_index_path
+  end
+
+  test "should make user an admin" do
+    sign_in @admin
+    post :update, {'user' => {@user.to_param => {"admin" => "yes"}}}
+    assert_redirected_to admin_roles_index_path
+    sign_out @admin
+    sign_in @user
+    get :index
     assert_response :success
   end
 

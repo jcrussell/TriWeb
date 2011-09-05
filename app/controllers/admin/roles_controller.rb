@@ -1,4 +1,5 @@
 class Admin::RolesController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :admin_required
 
   # GET /admin/roles/index
