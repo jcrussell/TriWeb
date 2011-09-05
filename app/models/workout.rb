@@ -12,17 +12,8 @@ class Workout < ActiveRecord::Base
 
   belongs_to :user # user that created the workout
 
-  # Returns a list of hashes between first and last. In the hash, there are two keys,
-  # :date, and :workouts.
-  # Expects two dates for parameters
+  # Returns a set of workouts that are between first and last, ordered by time
   def self.find_by_range(first, last)
     found = Workout.find(:all, :conditions => {:time => (first..last)}, :order => "time")
-    workouts = []
-
-    (first..last).each do |day|
-      workouts << {:date => day, :workouts => found.select {|x| x.time.to_date == day} }
-    end
-
-    workouts
   end
 end

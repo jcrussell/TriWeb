@@ -9,17 +9,17 @@ class Admin::RolesControllerTest < ActionController::TestCase
 
   test "should get redirected to sign in" do
     get :index
-    assert_redirected_to new_user_session_path
+    assert_requires_user
     post :update
-    assert_redirected_to new_user_session_path
+    assert_requires_user
   end
 
   test "should get permission denied" do
     sign_in @user
     get :index
-    assert_redirected_to root_path
+    assert_requires_role
     post :index
-    assert_redirected_to root_path
+    assert_requires_role
   end
 
   test "should get index" do
@@ -32,12 +32,14 @@ class Admin::RolesControllerTest < ActionController::TestCase
     sign_in @admin
     post :update
     assert_redirected_to admin_roles_index_path
+    assert_equal 'Failed to update roles.', flash[:alert]
   end
 
   test "should make user an admin" do
     sign_in @admin
     post :update, {'user' => {@user.to_param => {"admin" => "yes"}}}
     assert_redirected_to admin_roles_index_path
+    assert_equal 'Roles were updated successfully.', flash[:notice]
     sign_out @admin
     sign_in @user
     get :index

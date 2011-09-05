@@ -9,7 +9,7 @@ class WorkoutCommentsControllerTest < ActionController::TestCase
 
   test "should get redirected to sign in" do
     post :create, :workout_id => @workout.to_param, :workout_comment => @workout_comment.attributes
-    assert_redirected_to :controller => "/devise/sessions", :action => "new"
+    assert_requires_user
   end
 
   test "should create workout_comment" do
@@ -19,5 +19,6 @@ class WorkoutCommentsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to workout_path(@workout)
+    assert_equal 'Comment was saved successfully.', flash[:notice]
   end
 end

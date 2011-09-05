@@ -67,11 +67,11 @@ class WorkoutsController < ApplicationController
     begin
       # Moderators can update all workouts, otherwise users can only update the ones they've created
       if current_user.is_moderator?
-        Workouts.find(params[:id])
+        Workout.find(params[:id])
       else
         current_user.workouts.find(params[:id])
       end
-    rescue
+    rescue ActiveRecord::RecordNotFound
       nil
     end
   end

@@ -23,7 +23,7 @@ class WorkoutAttendeesController < ApplicationController
       redirect_to(@workout)
     elsif params[:workout_attendee][:likelihood].to_i == 0
       @workout_attendee.destroy
-      redirect_to(@workout, :notice => 'Workout attendance removed successfully.')
+      redirect_to(@workout, :notice => 'Workout attendance was removed successfully.')
     elsif @workout_attendee.update_attributes(params[:workout_attendee])
       redirect_to(@workout, :notice => 'Workout attendance was updated successfully.')
     else

@@ -12,7 +12,7 @@ class CalendarController < ApplicationController
     first = 3.day.ago(@date)
     last = 10.day.from_now(@date)
 
-    @workouts = Workout.find_by_range(first, last)
+    @workouts = create_workouts_hash(first, last)
 
     # Add class to each: past, today, future
     @workouts.each do |hash|
@@ -35,5 +35,18 @@ class CalendarController < ApplicationController
     # Calendar navigation
     @next_group = 14.days.from_now(@date)
     @prev_group = 14.days.ago(@date)
+  end
+
+  private
+
+  def create_workouts_hash(first, last)
+    found = Workout.find_by_range(first, last)
+    workouts = []
+
+    (first..last).each do |day|
+      workouts << {:date => day, :workouts => found.select {|x| x.time.to_date == day} }
+    end
+
+    workouts
   end
 end
