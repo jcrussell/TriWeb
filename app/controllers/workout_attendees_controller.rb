@@ -8,9 +8,9 @@ class WorkoutAttendeesController < ApplicationController
     @workout_attendee.user = current_user
 
     if @workout_attendee.save
-      redirect_to(@workout, :notice => 'Workout attendance was successfully saved.')
+      redirect_to(@workout, :notice => 'Workout attendance was saved successfully.')
     else
-      redirect_to(@workout, :notice => 'Failed to save workout attendance.')
+      redirect_to(@workout, :alert => 'Failed to save workout attendance.')
     end
   end
 
@@ -25,9 +25,9 @@ class WorkoutAttendeesController < ApplicationController
       @workout_attendee.destroy
       redirect_to(@workout, :notice => 'Workout attendance removed successfully.')
     elsif @workout_attendee.update_attributes(params[:workout_attendee])
-      redirect_to(@workout, :notice => 'Workout attendance was successfully updated.')
+      redirect_to(@workout, :notice => 'Workout attendance was updated successfully.')
     else
-      redirect_to(@workout, :notice => 'Failed to update workout attendance.')
+      redirect_to(@workout, :alert => 'Failed to update workout attendance.')
     end
   end
 end

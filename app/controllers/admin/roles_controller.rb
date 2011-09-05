@@ -12,7 +12,7 @@ class Admin::RolesController < ApplicationController
   # POST /admin/roles/update
   def update
     if params[:user].nil?
-      redirect_to(admin_roles_index_path, :notice => "Update failed")
+      redirect_to(admin_roles_index_path, :alert => "Failed to update roles.")
     else
       User.find(:all).each do |user|
         updates = params[:user][user.to_param]
@@ -26,7 +26,7 @@ class Admin::RolesController < ApplicationController
         user.save
       end
 
-      redirect_to(admin_roles_index_path, :notice => "Updated roles successfully.")
+      redirect_to(admin_roles_index_path, :notice => "Roles were updated successfully.")
     end
   end
 end

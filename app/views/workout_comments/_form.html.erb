@@ -1,6 +1,6 @@
 <div id="post_comment">
   <%= form_for [@workout, @workout.workout_comments.build] do |f| %>
-    <%= text_area :workout_comments, :comment, :rows => 3 %><br />
+    <%= text_area :workout_comment, :comment, :rows => 3, :value => "" %><br />
     <%= f.submit "Post Comment" %>
   <% end %>
 </div>

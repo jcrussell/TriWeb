@@ -21,8 +21,7 @@ class WorkoutsController < ApplicationController
     @workout = get_workout
 
     if @workout.nil?
-      flash[:notice] = 'Cannot edit workout, it does not exist or you did not create it.'
-      redirect_to :back
+      redirect_to(:back, :alert => 'Cannot edit workout, it does not exist or you did not create it.')
     end
   end
 
@@ -42,8 +41,7 @@ class WorkoutsController < ApplicationController
     @workout = get_workout
 
     if @workout.nil?
-      flash[:notice] = 'Cannot update workout, it does not exist or you did not create it.'
-      redirect_to :back
+      redirect_to(:back, :alert => 'Cannot update workout, it does not exist or you did not create it.')
     elsif @workout.update_attributes(params[:workout])
       redirect_to(@workout, :notice => 'Workout was successfully updated.')
     else
@@ -56,11 +54,10 @@ class WorkoutsController < ApplicationController
     @workout = get_workout
 
     if @workout.nil?
-      flash[:notice] = 'Cannot destroy workout, it does not exist or you did not create it.'
-      redirect_to :back
+      redirect_to(:back, :alert => 'Cannot destroy workout, it does not exist or you did not create it.')
     else
       @workout.destroy
-      redirect_to workouts_url
+      redirect_to(workouts_url, :notice => 'Workout removed successfully')
     end
   end
 

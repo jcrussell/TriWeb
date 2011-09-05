@@ -8,9 +8,9 @@ class WorkoutCommentsController < ApplicationController
     @workout_comment.user = current_user
 
     if @workout_comment.save
-      redirect_to(@workout, :notice => 'Comment was successfully saved.')
+      redirect_to(@workout, :notice => 'Comment was saved successfully.')
     else
-      redirect_to(@workout, :notice => 'Failed to save comment.')
+      redirect_to(@workout, :alert => 'Failed to save comment.')
     end
   end
 

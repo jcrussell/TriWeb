@@ -42,3 +42,22 @@
   margin: 15px 0px;
   padding: 5px 0px;
 }
+
+#flash {
+  width: 100%;
+}
+
+#flash div {
+  margin: 5px;
+  padding: 5px;
+}
+
+#notice {
+  background: #040;
+  color: #060;
+}
+
+#alert {
+  background: #400;
+  color: #600;
+}

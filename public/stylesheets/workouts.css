@@ -10,26 +10,26 @@
   display: inline;
 }
 
-.workout_comment {
+.comment {
   border: solid #AAA 1px;
   margin: 5px 0px;
 }
 
-.workout_comment .owner {
+.comment .owner {
   border: solid #BBB 1px;
 }
 
-.workout_comment .comment_header {
+.comment .comment_header {
   display: block;
   background: #AAA;
   margin-bottom: 2px;
 }
 
-.workout_comment .comment_header .owner {
+.comment .comment_header .owner {
   background: #BBB;
 }
 
-.workout_comment span {
+.comment span {
   padding: 2px;
 }
 
