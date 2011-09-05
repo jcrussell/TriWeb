@@ -1,6 +1,6 @@
 TriWeb::Application.routes.draw do
 
-  scope "/admin", :name_prefix => "admin" do
+  scope "/admin", :as => "admin" do
     get "roles/index"
     post "roles/update"
   end

@@ -10,18 +10,22 @@ class Admin::RolesController < ApplicationController
 
   # POST /admin/roles/update
   def update
-    User.find(:all).each do |user|
-      updates = params[:user][user.to_param]
-      User::ROLES_MASK.each do |role|
-        if updates.nil? || updates[role] != "yes"
-          user.remove_role role
-        else
-          user.add_role role
+    if params[:user].nil?
+      redirect_to(admin_roles_index_path, :notice => "Update failed")
+    else
+      User.find(:all).each do |user|
+        updates = params[:user][user.to_param]
+        User::ROLES_MASK.each do |role|
+          if updates.nil? || updates[role] != "yes"
+            user.remove_role role
+          else
+            user.add_role role
+          end
         end
+        user.save
       end
-      user.save
-    end
 
-    redirect_to(admin_roles_index_path, :notice => "Updated roles successfully.")
+      redirect_to(admin_roles_index_path, :notice => "Updated roles successfully.")
+    end
   end
 end
