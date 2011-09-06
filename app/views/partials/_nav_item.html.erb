@@ -1,0 +1,24 @@
+<% @name = nav_item[:name] %>
+<% @items = nav_item[:items] %>
+<% if @items.length == 1 %>
+  <%= link_to @name.capitalize, @items.first.except(:name) %>
+<% else %>
+  <span><%= @name %></span>
+  <ul>
+    <% @items.each do |val| %>
+      <li>
+      <% if val.kind_of?(Hash) %>
+        <% @item_name = val.delete(:name) %>
+        <% if !val[:method].nil? %>
+          <% @method = val.delete(:method) %>
+          <%= link_to @item_name.capitalize, val, :method => @method %>
+        <% else %>
+          <%= link_to @item_name.capitalize, val%>
+        <% end %>
+      <% else %>
+        <%= link_to val.capitalize, static_page_link(val) %>
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
