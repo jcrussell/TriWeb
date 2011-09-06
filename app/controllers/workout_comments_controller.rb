@@ -1,6 +1,8 @@
 class WorkoutCommentsController < ApplicationController
   before_filter :authenticate_user!
 
+  helper_method :current_user?
+
   # POST /workouts/1/workout_comments
   def create
     @workout = Workout.find(params[:workout_id])
@@ -14,4 +16,9 @@ class WorkoutCommentsController < ApplicationController
     end
   end
 
+  protected
+
+  def current_user?(workout)
+    workout.user == current_user
+  end
 end

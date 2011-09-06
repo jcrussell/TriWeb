@@ -1,6 +1,8 @@
 class WorkoutAttendeesController < ApplicationController
   before_filter :authenticate_user!
 
+  helper_method :current_user?, :get_change_type
+
   # POST /workouts/1/workout_attendees
   def create
     @workout = Workout.find(params[:workout_id])
@@ -29,5 +31,12 @@ class WorkoutAttendeesController < ApplicationController
     else
       redirect_to(@workout, :alert => 'Failed to update workout attendance.')
     end
+  end
+
+  protected
+
+  def get_change_type(val)
+    return "X" if val == 0
+    (val > 0) ? "+" : "-"
   end
 end

@@ -1,4 +1,4 @@
 <%= form_for [@workout_attendee.workout, @workout_attendee] do |f| %>
-  <%= hidden_field_tag "workout_attendee[likelihood]", get_new_val(@workout_attendee, val) %>
-  <%= f.submit get_change_type(val) %>
+  <%= hidden_field_tag "workout_attendee[likelihood]", @workout_attendee.get_new_val(val) %>
+  <%= f.submit (val == 0 && "X") || (val < 0 && "-") || "+" %>
 <% end %>

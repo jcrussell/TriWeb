@@ -14,6 +14,6 @@ class Workout < ActiveRecord::Base
 
   # Returns a set of workouts that are between first and last, ordered by time
   def self.find_by_range(first, last)
-    found = Workout.find(:all, :conditions => {:time => (first..last)}, :order => "time")
+    Workout.find(:all, :conditions => {:time => (first..last)}, :order => "time")
   end
 end

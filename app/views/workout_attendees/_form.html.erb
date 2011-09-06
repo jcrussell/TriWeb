@@ -1,6 +1,6 @@
 <div id="mark_interest">
   <%= form_for [@workout, @workout.workout_attendees.build] do |f| %>
-    <%= f.select :likelihood, create_levels %>
+    <%= f.select :likelihood, WorkoutAttendee.prefered_levels %>
     <%= f.submit "Mark Interest" %>
   <% end %>
 </div>

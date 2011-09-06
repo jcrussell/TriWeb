@@ -1,6 +1,8 @@
 class WorkoutsController < ApplicationController
   before_filter :authenticate_user!
 
+  helper_method :marked_interest?, :current_user?
+
   # GET /workouts
   def index
     redirect_to calendar_index_path
@@ -59,6 +61,16 @@ class WorkoutsController < ApplicationController
       @workout.destroy
       redirect_to(workouts_url, :notice => 'Workout removed successfully')
     end
+  end
+
+  protected
+
+  def marked_interest?(workout)
+    workout.workout_attendees.exists?(:user_id  => current_user.id)
+  end
+
+  def current_user?(belongs_to_user)
+    belongs_to_user.user == current_user
   end
 
   private
