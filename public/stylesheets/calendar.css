@@ -1,3 +1,7 @@
+#calendar {
+  position: relative;
+}
+
 #workouts {
   width: 100%;
   border-collapse: collapse;
@@ -45,8 +49,14 @@
 
 #calendar_nav {
   position: absolute;
-  top: 35px;
+  top: 0px;
   left: 150px;
+}
+
+#calendar_search {
+  position: absolute;
+  top: -5px;
+  right: 0px;
 }
 
 #calendar_nav a {

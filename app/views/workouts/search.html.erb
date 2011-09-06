@@ -1,0 +1,16 @@
+<h1>Results</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Created by</th>
+    <th>Date</th>
+  </tr>
+  <% @results.each do |workout| %>
+    <tr>
+    <td><%= link_to workout.name, workout %></td>
+    <td><%= workout.user.name %></td>
+    <td><%= workout.time.strftime("%m-%d-%y") %></td>
+    </tr>
+  <% end %>
+</table>

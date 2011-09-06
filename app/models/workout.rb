@@ -16,4 +16,13 @@ class Workout < ActiveRecord::Base
   def self.find_by_range(first, last)
     Workout.find(:all, :conditions => {:time => (first..last)}, :order => "time")
   end
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ? OR description LIKE ?',
+        "%#{search}%", "%#{search}%"], :order => "time", :limit => 25)
+    else
+      find(:all)
+    end
+  end
 end

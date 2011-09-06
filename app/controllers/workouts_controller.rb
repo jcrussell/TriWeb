@@ -63,6 +63,11 @@ class WorkoutsController < ApplicationController
     end
   end
 
+  # GET /calendar/search
+  def search
+    @results = Workout.search(params[:search])
+  end
+
   protected
 
   def marked_interest?(workout)

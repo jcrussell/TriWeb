@@ -1,38 +1,49 @@
-<h1>Calendar</h1>
+<div id="calendar">
+  <h1>Calendar</h1>
 
-<div id="calendar_nav">
-  <%= link_to "Today" %>
-  <%= link_to "<", :date => @prev_group %>
-  <%= link_to ">", :date => @next_group %>
-</div>
+  <div id="calendar_nav">
+    <%= link_to "Today" %>
+    <%= link_to "<", :date => @prev_group %>
+    <%= link_to ">", :date => @next_group %>
+  </div>
 
-<table id="workouts">
-<tr>
-<% @days_of_week.each do |day| %>
-  <th class='day_of_week'><%= day %></th>
-<% end %>
-</tr>
+  <div id="calendar_search">
+    <% form_tag workouts_search_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+      </p>
+    <% end %>
+  </div>
 
-<% @workouts.each do |week| %>
+  <table id="workouts">
   <tr>
-  <% week.each do |hash| %>
-    <td class='<%= hash[:class] %>'>
-      <span class='date'><%= hash[:date].strftime("%m-%d") %></span>
-      <ul>
-      <% hash[:workouts].each do |workout| %>
-        <li>
-          <span class="time"><%= workout.time.strftime("%I:%M %p:") %></span>
-          <span class="type"><%= link_to workout.what, workout %></span>
-        </li>
-      <% end %>
-      </ul>
-    </td>
+  <% @days_of_week.each do |day| %>
+    <th class='day_of_week'><%= day %></th>
   <% end %>
   </tr>
-<% end %>
 
-</table>
+  <% @workouts.each do |week| %>
+    <tr>
+    <% week.each do |hash| %>
+      <td class='<%= hash[:class] %>'>
+        <span class='date'><%= hash[:date].strftime("%m-%d") %></span>
+        <ul>
+        <% hash[:workouts].each do |workout| %>
+          <li>
+            <span class="time"><%= workout.time.strftime("%I:%M %p:") %></span>
+            <span class="type"><%= link_to workout.what, workout %></span>
+          </li>
+        <% end %>
+        </ul>
+      </td>
+    <% end %>
+    </tr>
+  <% end %>
 
-<br />
+  </table>
+
+  <br />
+</div>
 
 <%= link_to 'New Workout', new_workout_path %>

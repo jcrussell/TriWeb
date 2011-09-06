@@ -33,10 +33,10 @@ module NavigationHelper
       "help" => [:faqs, :links]
     }
     if user_signed_in?
-      nav["tools"] = [
-        page_link("/devise/registrations", :edit, "update info"),
-        page_link("/devise/sessions", :destroy, "logout", "delete")
-      ]
+      nav["tools"] = []
+      nav["tools"] << page_link("/admin/roles", :index, "manage users") if current_user.has_role? 'admin'
+      nav["tools"] << page_link("/devise/registrations", :edit, "update info")
+      nav["tools"] << page_link("/devise/sessions", :destroy, "logout", "delete")
     else
       nav["login"] = [
         page_link("/devise/sessions", :create)

@@ -7,6 +7,8 @@ TriWeb::Application.routes.draw do
 
   get "calendar/index"
 
+  get "workouts/search"
+
   resources :workouts do
     resources :workout_attendees, :only => [:create, :update]
     resources :workout_comments, :only => [:create]
