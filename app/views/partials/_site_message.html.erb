@@ -1,4 +1,8 @@
 <div class="site_message">
-  <span class="message_header">Message from: <%= site_message.user.name %> on <%= site_message.created_at %></span>
+  <span class="message_header">
+    Message from: <%= site_message.user.name %>
+    on <%= site_message.created_at.strftime("%m-%d") %>
+    at <%= site_message.created_at.strftime("%I:%M %p") %>
+  </span>
   <span><%= site_message.message %></span>
 </div>

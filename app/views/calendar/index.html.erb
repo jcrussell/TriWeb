@@ -1,19 +1,6 @@
+<h1>Calendar</h1>
+
 <div id="calendar">
-  <h1>Calendar</h1>
-
-  <div id="calendar_nav">
-    <%= link_to "Today" %>
-    <%= link_to "<", :date => @prev_group %>
-    <%= link_to ">", :date => @next_group %>
-  </div>
-
-  <div id="calendar_search">
-    <form action="<%= workouts_search_path %>" method="get" >
-      <%= text_field_tag 'q' %>
-      <%= submit_tag "Search", :name => nil%>
-    </form> 
-  </div>
-
   <table id="workouts">
   <tr>
   <% @days_of_week.each do |day| %>
@@ -41,7 +28,17 @@
 
   </table>
 
-  <br />
+  <div id="calendar_tools">
+    <form id="calendar_search" action="<%= workouts_search_path %>" method="get" >
+      <%= text_field_tag 'q' %>
+      <%= submit_tag "Search", :name => nil%>
+    </form>
+
+    <%= link_to "<", :date => @prev_group %>
+    <%= link_to "Today" %>
+    <%= link_to ">", :date => @next_group %>
+
+    <%= link_to 'New Workout', new_workout_path, :class => :new_workout %>
+  </div>
 </div>
 
-<%= link_to 'New Workout', new_workout_path %>

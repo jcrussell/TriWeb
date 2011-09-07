@@ -1,5 +1,9 @@
 <% css = current_user?(workout_comment) ? "owner" : "" %>
 <div class="comment <%= css %>">
-  <span class="comment_header">Comment by: <%= workout_comment.user.name %> on <%= workout_comment.created_at %></span>
+  <span class="comment_header">
+    Comment by: <%= workout_comment.user.name %>
+    on <%= workout_comment.created_at.strftime("%m-%d") %>
+    at <%= workout_comment.created_at.strftime("%I:%M %p") %>
+  </span>
   <span><%= workout_comment.comment %></span>
 </div>

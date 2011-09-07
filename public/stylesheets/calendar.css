@@ -47,22 +47,33 @@
   list-style-type: none;
 }
 
-#calendar_nav {
-  position: absolute;
-  top: 0px;
-  left: 150px;
+#calendar_tools {
+  text-align: center;
+  margin: 10px;
 }
 
 #calendar_search {
   position: absolute;
-  top: -5px;
   right: 0px;
+  bottom: 0px;
 }
 
-#calendar_nav a {
+#calendar_tools a {
   text-decoration: none;
   background: #888;
   padding: 5px;
   border-radius: 5px;
   -moz-border-radius: 5px;
 }
+
+#calendar_tools a.new_workout {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  text-decoration: underline;
+  background: none;
+  padding: 0px;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+}
+
