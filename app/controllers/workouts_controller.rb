@@ -3,11 +3,6 @@ class WorkoutsController < ApplicationController
 
   helper_method :marked_interest?, :current_user?
 
-  # GET /workouts
-  def index
-    redirect_to calendar_index_path
-  end
-
   # GET /workouts/1
   def show
     @workout = Workout.find(params[:id])
@@ -32,7 +27,7 @@ class WorkoutsController < ApplicationController
     @workout = current_user.workouts.build(params[:workout])
 
     if @workout.save
-      redirect_to(@workout, :notice => 'Workout was successfully created.')
+      redirect_to(@workout, :notice => 'Workout was updated successfully.')
     else
       render :action => "new"
     end
@@ -45,7 +40,7 @@ class WorkoutsController < ApplicationController
     if @workout.nil?
       redirect_to(:back, :alert => 'Cannot update workout, it does not exist or you did not create it.')
     elsif @workout.update_attributes(params[:workout])
-      redirect_to(@workout, :notice => 'Workout was successfully updated.')
+      redirect_to(@workout, :notice => 'Workout was updated successfully.')
     else
       render :action => "edit"
     end
@@ -63,7 +58,7 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  # GET /calendar/search
+  # GET /workouts/search
   def search
     @results = Workout.search(params[:search])
   end

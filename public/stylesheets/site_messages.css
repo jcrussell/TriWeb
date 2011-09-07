@@ -1,0 +1,15 @@
+.site_message {
+  border: solid #AAA 1px;
+  margin: 5px 0px;
+}
+
+.site_message .message_header {
+  display: block;
+  background: #AAA;
+  margin-bottom: 2px;
+}
+
+.site_message span {
+  padding: 2px;
+}
+

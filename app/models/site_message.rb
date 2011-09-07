@@ -5,4 +5,8 @@ class SiteMessage < ActiveRecord::Base
   belongs_to :user
 
   attr_accessible :message, :user
+
+  def internal?
+    internal
+  end
 end

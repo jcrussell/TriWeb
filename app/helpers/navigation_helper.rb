@@ -34,7 +34,8 @@ module NavigationHelper
     }
     if user_signed_in?
       nav["tools"] = []
-      nav["tools"] << page_link("/admin/roles", :index, "manage users") if current_user.has_role? 'admin'
+      nav["tools"] << page_link("/admin/roles", :index, "manage user roles") if current_user.has_role? 'admin'
+      nav["tools"] << page_link("/admin/site_messages", :new, "create site message") if current_user.has_role? 'admin'
       nav["tools"] << page_link("/devise/registrations", :edit, "update info")
       nav["tools"] << page_link("/devise/sessions", :destroy, "logout", "delete")
     else

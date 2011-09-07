@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20110906000056) do
   create_table "site_messages", :force => true do |t|
     t.integer  "user_id"
     t.text     "message"
+    t.boolean  "internal"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

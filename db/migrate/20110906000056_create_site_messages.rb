@@ -3,6 +3,7 @@ class CreateSiteMessages < ActiveRecord::Migration
     create_table :site_messages do |t|
       t.integer :user_id
       t.text :message
+      t.boolean :internal
 
       t.timestamps
     end

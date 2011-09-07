@@ -1,22 +1,24 @@
 TriWeb::Application.routes.draw do
 
-  scope "/admin", :as => "admin" do
+  namespace :admin do
     get "roles/index"
     post "roles/update"
+
+    resources :site_messages, :except => [:index]
   end
 
   get "calendar/index"
 
-  get "workouts/search"
-
-  resources :workouts do
-    resources :workout_attendees, :only => [:create, :update]
-    resources :workout_comments, :only => [:create]
-  end
-
   get "home/index"
 
   root :to => "home#index"
+
+  get "workouts/search"
+
+  resources :workouts, :except => [:index] do
+    resources :workout_attendees, :only => [:create, :update]
+    resources :workout_comments, :only => [:create]
+  end
 
   devise_for :users
 
