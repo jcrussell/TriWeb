@@ -8,7 +8,6 @@ class WorkoutsControllerTest < ActionController::TestCase
     @moderator.add_role "moderator"
     @moderator.save
     @workout = FactoryGirl.create(:workout)
-    @request.env["HTTP_REFERER"] = "/"
   end
 
   test "should get redirected to sign in" do
@@ -74,14 +73,14 @@ class WorkoutsControllerTest < ActionController::TestCase
   test "should not get edit" do
     sign_in @user_two
     get :edit, :id => @workout.to_param
-    assert_redirected_to @request.env["HTTP_REFERER"]
+    assert_redirected_to calendar_index_path
     assert_equal 'Cannot edit workout, it does not exist or you did not create it.', flash[:alert]
   end
 
   test "should not update workout" do
     sign_in @user_two
     put :update, :id => @workout.to_param, :workout => @workout.attributes
-    assert_redirected_to @request.env["HTTP_REFERER"]
+    assert_redirected_to calendar_index_path
     assert_equal 'Cannot update workout, it does not exist or you did not create it.', flash[:alert]
   end
 
@@ -91,7 +90,7 @@ class WorkoutsControllerTest < ActionController::TestCase
       delete :destroy, :id => @workout.to_param
     end
 
-    assert_redirected_to @request.env["HTTP_REFERER"]
+    assert_redirected_to calendar_index_path
     assert_equal 'Cannot destroy workout, it does not exist or you did not create it.', flash[:alert]
   end
 

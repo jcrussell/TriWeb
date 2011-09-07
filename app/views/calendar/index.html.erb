@@ -8,12 +8,10 @@
   </div>
 
   <div id="calendar_search">
-    <%= form_tag workouts_search_path :method => :get do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
-      </p>
-    <% end %>
+    <form action="<%= workouts_search_path %>" method="get" >
+      <%= text_field_tag 'q' %>
+      <%= submit_tag "Search", :name => nil%>
+    </form> 
   </div>
 
   <table id="workouts">

@@ -18,7 +18,7 @@ class WorkoutsController < ApplicationController
     @workout = get_workout
 
     if @workout.nil?
-      redirect_to(:back, :alert => 'Cannot edit workout, it does not exist or you did not create it.')
+      redirect_to(calendar_index_path, :alert => 'Cannot edit workout, it does not exist or you did not create it.')
     end
   end
 
@@ -38,7 +38,7 @@ class WorkoutsController < ApplicationController
     @workout = get_workout
 
     if @workout.nil?
-      redirect_to(:back, :alert => 'Cannot update workout, it does not exist or you did not create it.')
+      redirect_to(calendar_index_path, :alert => 'Cannot update workout, it does not exist or you did not create it.')
     elsif @workout.update_attributes(params[:workout])
       redirect_to(@workout, :notice => 'Workout was updated successfully.')
     else
@@ -51,7 +51,7 @@ class WorkoutsController < ApplicationController
     @workout = get_workout
 
     if @workout.nil?
-      redirect_to(:back, :alert => 'Cannot destroy workout, it does not exist or you did not create it.')
+      redirect_to(calendar_index_path, :alert => 'Cannot destroy workout, it does not exist or you did not create it.')
     else
       @workout.destroy
       redirect_to(workouts_url, :notice => 'Workout removed successfully')
@@ -60,7 +60,8 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts/search
   def search
-    @results = Workout.search(params[:search])
+    redirect_to(calendar_index_path, :alert => 'Query must not be blank') and return if params[:q].blank?
+    @results = Workout.search(params[:q])
   end
 
   protected
