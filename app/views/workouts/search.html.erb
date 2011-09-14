@@ -1,15 +1,22 @@
 <h1>Results</h1>
 
-<table>
+<table class="styled">
   <tr>
+    <th></th>
     <th>Name</th>
+    <th>Type</th>
     <th>Created by</th>
-    <th>Date</th>
+    <th>Created on</th>
+    <th>When</th>
   </tr>
+  <% @i = 0 %>
   <% @results.each do |workout| %>
-    <tr>
+    <tr class="<%= cycle("even", "odd") %>">
+    <td><%= @i+=1 %></td>
     <td><%= link_to workout.name, workout %></td>
+    <td><%= workout.what %></td>
     <td><%= workout.user.name %></td>
+    <td><%= workout.created_at.strftime("%m-%d-%y") %></td>
     <td><%= workout.time.strftime("%m-%d-%y") %></td>
     </tr>
   <% end %>

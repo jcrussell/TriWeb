@@ -1,7 +1,7 @@
 <h1>Roles</h1>
 
 <%= form_tag admin_roles_update_path do %>
-  <table id="roles">
+  <table id="roles" class="styled">
     <tr>
       <th>Name</th>
       <th>Email</th>
@@ -10,7 +10,7 @@
         <table>
           <tr>
           <% @roles.each do |role| %>
-            <td><%= role %></td>
+            <td style="width: <%=(100.to_f/@num_roles).to_i%>%"><%= role %></td>
           <% end %>
           </tr>
         </table>
@@ -18,7 +18,7 @@
     </tr>
     
     <% @users.each do |user| %>
-      <tr>
+      <tr class="<%= cycle("even", "odd") %>">
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <% @roles.each do |role| %>

@@ -3,21 +3,23 @@
   margin-left: auto;
   margin-right: auto;
   background: #DDD;
-  padding: 10px;
-  border-radius: 15px;
-  -moz-border-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  -moz-border-bottom-right-radius: 15px;
+  -moz-border-bottom-left-radius: 15px;
 }
 
 #pageheader {
-  margin-top: 10px;
   height: 75px;
   position: relative;
+  background: #2B3642;
+  padding: 10px 5px;
 }
 
 #nav {
   display: block;
   position: absolute;
-  top: 45px;
+  top: 65px;
   right: 0px;
 }
 
@@ -29,6 +31,7 @@
 
 #pagefooter {
   margin-top: 10px;
+  padding: 10px;
 }
 
 .banner {
@@ -41,6 +44,10 @@
   font-weight: bold;
   margin: 15px 0px;
   padding: 5px 0px;
+}
+
+a:link, a:visited, a:active, a:hover {
+  color: #2B3642;
 }
 
 #flash {

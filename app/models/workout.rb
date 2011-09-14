@@ -5,7 +5,7 @@ class Workout < ActiveRecord::Base
   validates_inclusion_of :what, :in => TYPES
   validates_datetime :time, :after => :now
 
-  attr_accessible :name, :description, :what, :time
+  attr_accessible :name, :description, :what, :time, :created_at
 
   has_many :workout_attendees, :dependent => :destroy
   has_many :workout_comments, :dependent => :destroy

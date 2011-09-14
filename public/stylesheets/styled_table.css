@@ -1,0 +1,41 @@
+table.styled {
+  margin:10px 0pt 25px;
+  width:100%;
+  border: solid 2px black;
+  border-collapse:collapse;
+}
+
+table.styled td, table.styled th {
+  text-align:center;
+  padding: 0px;
+  margin: 0px;
+}
+
+table.styled td {
+  border: solid 1px black;
+}
+
+table.styled th {
+  font-weight:bold;
+  border: solid 2px black;
+  color:#1C264E;
+  background:#B03514;
+}
+
+table.styled table {
+  width: 100%;
+  border-spacing: 0px;
+  border-top: black 1px solid;
+}
+
+table.styled table td {
+  border: none;
+}
+
+table.styled tr.odd {
+  background: silver;
+}
+
+table.styled tr.even {
+  background: white;
+}

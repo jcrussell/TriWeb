@@ -14,7 +14,7 @@
 #workouts th {
   text-align: center;
   color: #1C264E;
-  background: #A7821E;
+  background: #B03514;
   font-weight: bold;
   font-size: 120%;
 }
@@ -60,10 +60,14 @@
 
 #calendar_tools a {
   text-decoration: none;
-  background: #888;
+  font-size: 110%;
+  background: #B03514;
   padding: 5px;
   border-radius: 5px;
   -moz-border-radius: 5px;
+  border-style: outset;
+  border-color: #000;
+  border-width: 1px;
 }
 
 #calendar_tools a.new_workout {
@@ -75,5 +79,6 @@
   padding: 0px;
   border-radius: 0px;
   -moz-border-radius: 0px;
+  border-style: none;
 }
 
