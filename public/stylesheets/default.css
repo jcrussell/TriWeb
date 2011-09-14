@@ -57,14 +57,15 @@ a:link, a:visited, a:active, a:hover {
 #flash div {
   margin: 5px;
   padding: 5px;
+  color: #000;
+  border-radius: 5px;
 }
 
 #notice {
-  background: #040;
-  color: #060;
+  background: #BEFFBE;
+
 }
 
 #alert {
-  background: #400;
-  color: #600;
+  background: #FFBEBE;
 }

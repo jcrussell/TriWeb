@@ -11,22 +11,25 @@ class Admin::RolesController < ApplicationController
 
   # POST /admin/roles/update
   def update
-    if params[:user].nil?
-      redirect_to(admin_roles_index_path, :alert => "Failed to update roles.")
-    else
-      User.find(:all).each do |user|
-        updates = params[:user][user.to_param]
-        User::ROLES_MASK.each do |role|
-          if updates.nil? || updates[role] != "yes"
+    # If the user params are empty, probably means that the admin unchecked all the checkboxes
+    params[:user] ||= {}
+    User.find(:all).each do |user|
+      updates = params[:user][user.to_param]
+      User::ROLES_MASK.each do |role|
+        if updates.nil? || updates[role] != "yes"
+          # Shouldn't be able to remove own admin role
+          if user != current_user || role != "admin"
             user.remove_role role
           else
-            user.add_role role
+            flash[:alert] = "Cannot remove admin role from yourself. Will continue to update other users."
           end
+        else
+          user.add_role role
         end
-        user.save
       end
-
-      redirect_to(admin_roles_index_path, :notice => "Roles were updated successfully.")
+      user.save
     end
+
+    redirect_to(admin_roles_index_path, :notice => "Roles were updated successfully.")
   end
 end

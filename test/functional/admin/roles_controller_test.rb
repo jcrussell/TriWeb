@@ -28,11 +28,12 @@ class Admin::RolesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should not get update no data" do
+  test "should update not remove admin role" do
     sign_in @admin
-    post :update
+    post :update # no data => remove all roles from all users
     assert_redirected_to admin_roles_index_path
-    assert_equal 'Failed to update roles.', flash[:alert]
+    assert_equal 'Cannot remove admin role from yourself. Will continue to update other users.', flash[:alert]
+    assert_equal 'Roles were updated successfully.', flash[:notice]
   end
 
   test "should make user an admin" do
