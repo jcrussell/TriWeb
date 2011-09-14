@@ -11,7 +11,7 @@ module NavigationHelper
 
     rendered << "</ul>"
 
-    render :inline => rendered.join("")
+    rendered.join("").html_safe
   end
 
   private

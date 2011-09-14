@@ -40,4 +40,5 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
   gem 'shoulda'
+  gem 'mocha'
 end
