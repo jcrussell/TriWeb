@@ -1,1 +1,19 @@
-TriWeb README
+TriWeb is a simple rails application to help coordinate workouts between teammates.
+
+Features:
+
+1. Workout Calendar - create workouts, mark attendance, leave comments.
+2. Site Messages - Admins can create messages, which can be internal or global, to inform users about news.
+3. Roles - Moderators can update workouts, admins can assign roles and create site messages.
+
+Setup Instructions:
+
+1. Checkout source
+2. Run "bundle install" from source root directory - may require additional packages such as "libsqlite3-ruby1.9.1". Only tested with Ruby 1.9.2
+3. Edit config/config.yaml, configure as needed.
+4. Edit config/initializers/devise.rb, change email address.
+5. Input content into static pages found in app/views/static and app/views/home
+6. Start server using "rails server -e production".
+7. Create a user account for yourself, complete verification step.
+8. Give yourself admin privileges using "rails dbconsole" and the following: "update users set roles_mask=1 where id=1;" (assuming you're the first to create an account).
+9. Explore and enjoy. Please submit issues to the GitHub project.
